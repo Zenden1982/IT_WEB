@@ -8,22 +8,22 @@ namespace IT_WEB.Models
         public int Id { get; set; }
 
         [MaxLength(200)]
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
-        [MaxLength(100)]
-        public string Brand { get; set; }
+		[MaxLength(100)]
+        public string Brand { get; set; } = "";
 
-        [MaxLength(100)]
+		[MaxLength(100)]
         public string Category { get; set; } = "";
 
         [Precision(16, 2)]
         public decimal Price { get; set; }
 
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
-        [MaxLength(160)]
-        public string ImageFileName { get; set; }
+		[MaxLength(160)]
+        public string ImageFileName { get; set; } = "";
 
-        public DateTime CreatedAt { get; set; }
+		public DateTime CreatedAt { get; set; }
     }
 }
