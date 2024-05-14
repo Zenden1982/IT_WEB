@@ -1,0 +1,37 @@
+﻿@model List<Order>
+@{
+
+}
+<h2 class="text-center mb-5">Список заказов</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="Products" asp-action="Create">Новый продукт</a>
+    </div>
+    <div class="col">
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID Клиента</th>
+            <th>ID Продукта</th>
+            <th>ID Магазина</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.ClientId</td>
+                <td>@product.ProductId/td>
+                <td>@product.ShopId/td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IT_WEB.Models;
+using IT_WEB.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IT_WEB.Controllers
 {
     public class OrdersContoller : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDBContext context;
+
+        public OrdersContoller(ApplicationDBContext context)
         {
-            return View();
+            this.context = context;
+        }
+        public IActionResult IndexOrders()
+        {
+            var orders = context.Orders.ToList();
+
+            return View(orders);
         }
     }
 }
