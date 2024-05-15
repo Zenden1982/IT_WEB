@@ -42,5 +42,57 @@ namespace IT_WEB.Controllers
             context.SaveChanges();
             return RedirectToAction("IndexShop", "Shops");
         }
+        public IActionResult Edit(int id)
+        {
+            var shop = context.Shops.Find(id);
+            if (shop == null)
+            {
+                return RedirectToAction("IndexShop");
+            }
+
+            var shopDto = new ShopDto()
+            {
+                Name = shop.Name,
+                Description = shop.Description,
+                address = shop.address
+            };
+            ViewData["ShopId"] = shop.Id;
+
+            return View(shopDto);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, ShopDto shopDto)
+        {
+            var shop = context.Shops.Find(id);
+            if (shop == null)
+            {
+                return RedirectToAction("IndexShop", "Shops");
+            }
+            if (!ModelState.IsValid)
+            {
+                ViewData["ShopId"] = shop.Id;
+
+                return View(shopDto);
+            }
+            // обновляем магазин в базе данных
+            shop.Name = shopDto.Name;
+            shop.Description = shopDto.Description;
+            shop.address = shopDto.address;
+            context.SaveChanges();
+            return RedirectToAction("IndexShop", "Shops");
+        }
+        public IActionResult Delete(int id)
+        {
+            var shop = context.Shops.Find(id);
+            if (shop == null)
+            {
+                return RedirectToAction("IndexShop", "Shops");
+            }
+            context.Shops.Remove(shop);
+            context.SaveChanges();
+            return RedirectToAction("IndexShop", "Shops");
+        }
+
     }
 }

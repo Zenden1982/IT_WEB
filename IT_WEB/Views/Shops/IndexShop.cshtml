@@ -19,6 +19,7 @@
             <th>Название</th>
             <th>Описание</th>
             <th>Адрес</th>
+            <th>Действия</th>
         </tr>
     </thead>
 
@@ -30,6 +31,10 @@
                 <td>@shop.Name</td>
                 <td>@shop.Description</td>
                 <td>@shop.address</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="Shops" asp-action="Edit" asp-route-id="@shop.Id">Редактировать</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Shops" asp-action="Delete" asp-route-id="@shop.Id">Удалить</a>
+                </td>
             </tr>
         }
     </tbody>

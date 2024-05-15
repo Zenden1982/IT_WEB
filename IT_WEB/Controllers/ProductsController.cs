@@ -50,7 +50,7 @@ namespace IT_WEB.Controllers
 				return View(productDto);
 			}
 
-			// save the image file
+			// сохранение изображения
 			string newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 			newFileName += Path.GetExtension(productDto.ImageFile!.FileName);
 			string imageFullPath = environment.WebRootPath + "/base/" + newFileName;
@@ -139,5 +139,19 @@ namespace IT_WEB.Controllers
 			context.SaveChanges();
 			return RedirectToAction("Index","Products");
 		}
+
+		public IActionResult Delete(int id)
+		{
+			var product = context.Products.Find(id);
+			if (product == null)
+			{
+				return RedirectToAction("Index", "Products");
+			}
+            string imageFullPath = environment.WebRootPath + "/base/" + product.ImageFileName;
+            System.IO.File.Delete(imageFullPath);
+			context.Products.Remove(product);
+			context.SaveChanges();
+            return RedirectToAction("Index", "Products");
+        }
 	}
 }
