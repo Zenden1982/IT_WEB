@@ -16,8 +16,8 @@ namespace IT_WEB.Models
 		[MaxLength(100)]
 		public string Category { get; set; } = "";
 
-		[Required(ErrorMessage = "Поле \"Цена\" является обязательным для заполнения.")]
-		public decimal? Price { get; set; }
+		[Required]
+		public decimal Price { get; set; }
 
 		[Required(ErrorMessage = "Поле \"Описание\" является обязательным для заполнения.")]
 		public string Description { get; set; } = "";
