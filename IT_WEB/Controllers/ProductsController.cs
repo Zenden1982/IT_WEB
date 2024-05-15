@@ -1,4 +1,5 @@
-﻿using IT_WEB.Services;
+﻿using IT_WEB.Models;
+using IT_WEB.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_WEB.Controllers
@@ -21,6 +22,20 @@ namespace IT_WEB.Controllers
             return View();
         }
 
-
+        [HttpPost]
+		public IActionResult Create(ProductDto productDto)
+		{
+			if (productDto.ImageFile == null)
+            {
+				ModelState.AddModelError("ImageFile", "Требуется файл изображения");
+			}
+			
+			if (!ModelState.IsValid)
+            {
+                return View(productDto);    
+            }
+			
+            return RedirectToAction("Index", "Products");
+		}
 	}
 }

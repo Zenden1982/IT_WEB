@@ -4,19 +4,22 @@ namespace IT_WEB.Models
 {
 	public class ProductDto
 	{
-		[Required, MaxLength(200)]
+		[Required(ErrorMessage = "Поле \"Название\" является обязательным для заполнения.")]
+		[MaxLength(200)]
 		public string Name { get; set; } = "";
 
-		[Required, MaxLength(100)]
+		[Required(ErrorMessage = "Поле \"Бренд\" является обязательным для заполнения.")]
+		[MaxLength(100)]
 		public string Brand { get; set; } = "";
 
-		[Required, MaxLength(100)]
+		[Required(ErrorMessage = "Поле \"Категория\" является обязательным для заполнения.")]
+		[MaxLength(100)]
 		public string Category { get; set; } = "";
-		
-		[Required]
-		public decimal Price { get; set; }
-		
-		[Required]
+
+		[Required(ErrorMessage = "Поле \"Цена\" является обязательным для заполнения.")]
+		public decimal? Price { get; set; }
+
+		[Required(ErrorMessage = "Поле \"Описание\" является обязательным для заполнения.")]
 		public string Description { get; set; } = "";
 
 		public IFormFile? ImageFile { get; set; }
