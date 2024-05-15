@@ -6,7 +6,7 @@
 
 <div class="row mb-5">
     <div class="col">
-        <a class="btn btn-primary" asp-controller="Products" asp-action="Create">New Product</a>
+        <a class="btn btn-primary" asp-controller="Shops" asp-action="Create">Новый магазин</a>
     </div>
     <div class="col">
     </div>
@@ -23,13 +23,13 @@
     </thead>
 
     <tbody>
-        @foreach (var product in Model)
+        @foreach (var shop in Model)
         {
             <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.Description</td>
-                <td>@product.address</td>
+                <td>@shop.Id</td>
+                <td>@shop.Name</td>
+                <td>@shop.Description</td>
+                <td>@shop.address</td>
             </tr>
         }
     </tbody>
