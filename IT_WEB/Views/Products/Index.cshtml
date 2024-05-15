@@ -6,7 +6,7 @@
 
     <div class="row mb-5">
         <div class="col">
-            <a class="btn btn-primary" asp-controller="Products" asp-action="Create">Новый продукт</a>
+            <a class="btn btn-primary" asp-controller="Products" asp-action="Create">Новый заказ</a>
         </div>
         <div class="col">
         </div>
@@ -34,7 +34,7 @@
                     <td>@product.Name</td>
                     <td>@product.Brand</td>
                     <td>@product.Category</td>
-                    <td>@product.Price</td>
+                    <td>@product.Price Р</td>
                     <td><img src="/base/@product.ImageFileName" width="100" /></td>
                     <td>@product.CreatedAt.ToString("MM/dd/yyyy")</td>
                     <td style="white-space:nowrap">
