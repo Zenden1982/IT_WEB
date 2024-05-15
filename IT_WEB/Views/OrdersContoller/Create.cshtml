@@ -1,0 +1,52 @@
+﻿@model OrderDto
+@{
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Новый продукт</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Выберите клиента</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="ClientId" asp-items="@(new SelectList(ViewBag.Clients, "Id", "Name"))">
+                        <option value="">Выберите клиента</option>
+                    </select>
+                    <span asp-validation-for="ClientId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Выберите продукт</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="ProductId" asp-items="@(new SelectList(ViewBag.Products, "Id", "Name"))">
+                        <option value="">Выберите продукт</option>
+                    </select>
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Выберите магазин</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="ShopId" asp-items="@(new SelectList(ViewBag.Shops, "Id", "Name"))">
+                        <option value="">Выберите магазин</option>
+                    </select>
+                    <span asp-validation-for="ShopId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Добавить</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="OrdersContoller" asp-action="IndexOrders" role="button">
+                        Отмена
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

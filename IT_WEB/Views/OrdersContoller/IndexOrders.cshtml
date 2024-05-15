@@ -6,7 +6,7 @@
 
 <div class="row mb-5">
     <div class="col">
-        <a class="btn btn-primary" asp-controller="Products" asp-action="Create">Новый продукт</a>
+        <a class="btn btn-primary" asp-controller="OrdersContoller" asp-action="Create">Новый продукт</a>
     </div>
     <div class="col">
     </div>
@@ -19,17 +19,22 @@
             <th>ID Клиента</th>
             <th>ID Продукта</th>
             <th>ID Магазина</th>
+            <th>Действия</th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var product in Model)
+        @foreach (var order in Model)
         {
             <tr>
-                <td>@product.Id</td>
-                <td>@product.ClientId</td>
-                <td>@product.ProductId/td>
-                <td>@product.ShopId/td>
+                <td>@order.Id</td>
+                <td>@order.ClientId</td>
+                <td>@order.ProductId</td>
+                <td>@order.ShopId</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="OrdersContoller" asp-action="Edit" asp-route-id="@order.Id">Редактировать</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="OrdersContoller" asp-action="Delete" asp-route-id="@order.Id">Удалить</a>
+                </td>
             </tr>
         }
     </tbody>
